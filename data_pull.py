@@ -10,7 +10,7 @@ alcohol = getExistAttribute('alcoholic_drinks', count=9999)
 
 rows = []
 for attribute, values in zip(
-    ['running', 'weight_lifting', 'reading', 'alcohol'],
+    ['running', 'weight lifting', 'reading', 'alcohol'],
     [running, weight_lifting, reading, alcohol]
 ):
     for entry in values:
