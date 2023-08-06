@@ -16,10 +16,10 @@ for attribute, values in zip(
     for entry in values:
         date = entry['date']
         value = entry['value']
-        rows.append({'date': date, 'attribute': attribute, 'value': value})
+        rows.append({'date': date, 'name': attribute, 'value': value})
 
 with open(f"data/goals_data_{datetime.now().strftime('%Y-%m-%d')}.csv", 'w', newline='') as csvfile:
-    fieldnames = ['date', 'attribute', 'value']
+    fieldnames = ['date', 'name', 'value']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for row in rows:
