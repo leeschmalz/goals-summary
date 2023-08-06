@@ -18,7 +18,7 @@ for attribute, values in zip(
         value = entry['value']
         rows.append({'date': date, 'attribute': attribute, 'value': value})
 
-with open(f"goals_data_{datetime.now().strftime('%Y-%m-%d')}.csv", 'w', newline='') as csvfile:
+with open(f"data/goals_data_{datetime.now().strftime('%Y-%m-%d')}.csv", 'w', newline='') as csvfile:
     fieldnames = ['date', 'attribute', 'value']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
