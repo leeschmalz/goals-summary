@@ -38,11 +38,11 @@ data <- data %>%
 
 p <- ggplot(data, aes(x=date, y=cumulative, color=type, label=daily_value)) +
   geom_line() +
-  geom_point(data = data %>% filter(row_number()%%7==0), shape=1) +
+  geom_point(data = data %>% filter(row_number()%%7==0|type=="goal"), shape=1) +
   facet_wrap(~name,scales = "free_y") +
   theme(axis.title.y = element_blank(),
         axis.title.x = element_blank())
 
 p <- ggplotly(p)
 
-saveWidget(p, file = "./plots/goals-2023.html")
+saveWidget(p, file = paste0(github_path,"/goals-summary/plots/goals-2023.html"))
