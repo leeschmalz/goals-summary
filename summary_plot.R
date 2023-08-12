@@ -1,12 +1,10 @@
-rm(list = ls())
-
 library(data.table)
 library(ggplot2)
 library(dplyr)
 library(plotly)
 library(htmlwidgets)
 
-data_filename <- "goals_data_2023-08-06"
+data_filename <- paste0("goals_data_",Sys.Date())
 github_path <- Sys.getenv("GITHUB_PATH")
 
 data <- fread(paste0(github_path,"/goals-summary/data/", data_filename, ".csv")) %>% rename(daily_value = value)
