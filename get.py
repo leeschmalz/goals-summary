@@ -1,5 +1,7 @@
 import requests
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def getExistAttribute(attribute, count):
     exist_token = os.environ.get("EXIST_TOKEN")

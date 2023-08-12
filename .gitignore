@@ -1,3 +1,4 @@
 plots
 *.csv
 .DS_Store
+.env
