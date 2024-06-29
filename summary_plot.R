@@ -13,7 +13,7 @@ data <- data %>%
   mutate(daily_value = if_else(name=="running", daily_value/1.609344, daily_value)) %>% # km to miles
   mutate(daily_value = round(daily_value,2)) %>%
   mutate(date = as.Date(date)) %>% 
-  filter(date>=as.Date("2023-01-01")) %>% 
+  filter(date>=as.Date("2024-01-01")) %>% 
   mutate(type = "progress") %>%
   arrange(name,date) %>% 
   group_by(name) %>% 
@@ -22,17 +22,17 @@ data <- data %>%
 
 # add yearly goals
 for (name1 in unique(data$name)){
-  data <- data %>% add_row(date = as.Date("2023-01-01"), 
+  data <- data %>% add_row(date = as.Date("2024-01-01"), 
                            name = name1,
                            type = "goal",
                            cumulative = 0)
 }
 
 data <- data %>%
-  add_row(date = as.Date("2023-12-31"), name = "running", type = "goal", cumulative = 600) %>%
-  add_row(date = as.Date("2023-12-31"), name = "alcohol", type = "goal", cumulative = 365) %>%
-  add_row(date = as.Date("2023-12-31"), name = "reading", type = "goal", cumulative = 3650) %>%
-  add_row(date = as.Date("2023-12-31"), name = "weight lifting", type = "goal", cumulative = 96)
+  add_row(date = as.Date("2024-12-31"), name = "running", type = "goal", cumulative = 1000) %>%
+  add_row(date = as.Date("2024-12-31"), name = "alcohol", type = "goal", cumulative = 365) %>%
+  add_row(date = as.Date("2024-12-31"), name = "reading", type = "goal", cumulative = 3650) %>%
+  add_row(date = as.Date("2024-12-31"), name = "weight lifting", type = "goal", cumulative = 78)
 
 p <- ggplot(data, aes(x=date, y=cumulative, color=type, label=daily_value)) +
   geom_line() +
@@ -43,4 +43,4 @@ p <- ggplot(data, aes(x=date, y=cumulative, color=type, label=daily_value)) +
 
 p <- ggplotly(p)
 
-saveWidget(p, file = paste0(github_path,"/goals-summary/plots/goals-2023.html"))
+saveWidget(p, file = paste0(github_path,"/goals-summary/plots/goals-2024.html"))
