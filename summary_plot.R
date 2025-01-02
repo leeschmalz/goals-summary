@@ -39,7 +39,8 @@ p <- ggplot(data, aes(x=date, y=cumulative, color=type, label=daily_value)) +
   geom_point(data = data %>% filter(row_number()%%7==0|type=="goal"), shape=1) +
   facet_wrap(~name,scales = "free_y") +
   theme(axis.title.y = element_blank(),
-        axis.title.x = element_blank())
+        axis.title.x = element_blank()) +
+  theme_bw()
 
 p <- ggplotly(p)
 
